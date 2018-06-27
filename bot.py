@@ -124,6 +124,9 @@ async def on_message(message):
     elif message.content.lower().startswith(prefix+"save"):
         args = message.content.split()
         os.environ[args[1]] = args[2]
+    elif message.content.lower().startswith(prefix+"get"):
+        args = message.content.split()
+        await client.send_message(message.channel, os.environ[args[1]])
 @client.event
 async def on_message_delete(message):
     await client.send_message(client.get_channel("441431242546872320"), "The message:\n'"+message.content+"'\nby <@"+message.author.id+"> has been deleted")
