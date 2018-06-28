@@ -116,9 +116,10 @@ async def on_message(message):
             await asyncio.sleep(1)
             await client.edit_message(msg, num)
     elif message.content.lower().startswith("i'm") or message.content.lower().startswith("im"):
-        args = message.content.split()
-        args = " ".join(args[1:])
-        await client.send_message(message.channel, "Hello "+args+", I'm Dad!")
+        pass
+        #args = message.content.split()
+        #args = " ".join(args[1:])
+        #await client.send_message(message.channel, "Hello "+args+", I'm Dad!")
     elif message.content.lower() == prefix+"ping":
         await client.send_message(message.channel, "Pong! <@"+message.author.id+">")
 
