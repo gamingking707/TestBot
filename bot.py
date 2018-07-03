@@ -24,7 +24,7 @@ async def on_ready():
 async def on_message(message):
     message.content = str(message.content)
     if any(msg+" testbot" in message.content.lower() for msg in greetings):
-        if message.author.id in ("430358551974772739","460966585549717514"):
+        if "441393583048884224" in (role.id for role in message.author.roles):
             await client.send_message(message.channel, "Hello Master!")
         elif "441392915986776064" in [role.id for role in message.author.roles]:
             await client.send_message(message.channel, "Hello Admin <@"+message.author.id+">!")
