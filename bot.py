@@ -23,6 +23,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message.content = str(message.content)
+    if "441393780256407562" in (role.id for role in message.author.roles):
+        if message.content.lower().startswith(prefix+"wipe"):
+            args = message.content.split()
+            async for i in client.logs_from(message.channel,int(args[1])+1):
+                await client.delete_message(i)
     if any(msg+" testbot" in message.content.lower() for msg in greetings):
         if "441393583048884224" in (role.id for role in message.author.roles):
             await client.send_message(message.channel, "Hello Master!")
@@ -30,11 +35,6 @@ async def on_message(message):
             await client.send_message(message.channel, "Hello Admin <@"+message.author.id+">!")
         else:
             await client.send_message(message.channel, "Hello <@"+message.author.id+">!")
-    elif "441393780256407562" in (role.id for role in message.author.roles):
-        if message.content.lower().startswith(prefix+"wipe"):
-            args = message.content.split()
-            async for i in client.logs_from(message.channel,int(args[1])+1):
-                await client.delete_message(i)
     elif message.content == prefix+"DIE" and message.author.id == "430358551974772739":
         await client.send_message(message.channel, "OOF")
         sys.exit()
