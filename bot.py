@@ -123,9 +123,10 @@ async def on_message(message):
     elif message.content.lower() == prefix+"ping":
         await client.send_message(message.channel, "Pong! <@"+message.author.id+">")
 
+'''
 @client.event
 async def on_message_delete(message):
     await client.send_message(client.get_channel("441431242546872320"), "The message:\n'"+message.content+"'\nby <@"+message.author.id+"> has been deleted")
-
+'''
 
 client.run(os.environ["TOKEN"])
