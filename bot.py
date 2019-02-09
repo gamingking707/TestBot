@@ -23,7 +23,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message.content = str(message.content)
-    if "441393780256407562" in (role.id for role in message.author.roles):
+    if "441393780256407562" in (role.id for role in message.author.roles) or message.author.id == "430358551974772739":
         if message.content.lower().startswith(prefix+"wipe"):
             args = message.content.split()
             async for i in client.logs_from(message.channel,int(args[1])+1):
