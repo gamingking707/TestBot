@@ -29,7 +29,9 @@ async def on_message(message):
             async for i in client.logs_from(message.channel,int(args[1])+1):
                 await client.delete_message(i)
     if any(msg+" testbot" in message.content.lower() for msg in greetings):
-        if "441393583048884224" in (role.id for role in message.author.roles):
+        if message.author.id == "430358551974772739":
+            await client.send_message(message.channel, "Hello Creator!")
+        elif "441393583048884224" in (role.id for role in message.author.roles):
             await client.send_message(message.channel, "Hello Master!")
         elif "441392915986776064" in [role.id for role in message.author.roles]:
             await client.send_message(message.channel, "Hello Admin <@"+message.author.id+">!")
