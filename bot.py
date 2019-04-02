@@ -11,6 +11,7 @@ import os
 mode = "Talk"
 prefix = "/"
 greetings = ["hello","hi","howdy","whats up","what's up","sup","hey"]
+linkIDs = ("https://","http://","discord.gg/",".com",".org",".cc")
 
 Client = discord.Client()
 client = commands.Bot(command_prefix = prefix)
@@ -23,6 +24,9 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message.content = str(message.content)
+    if not "441392574700191744" in (role.id for role in message.author.roles):
+        if any(i in message.content.lower() for i in linkIDs):
+            await client.delete_message(message)
     if "441393780256407562" in (role.id for role in message.author.roles) or message.author.id == "430358551974772739":
         if message.content.lower().startswith(prefix+"wipe"):
             args = message.content.split()
