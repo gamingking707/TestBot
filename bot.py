@@ -22,6 +22,11 @@ async def on_ready():
     print("Bot is ready!")
 
 @client.event
+async def on_member_remove(member):
+    log = client.get_channel("570406892652724225")
+    await client.send_message(log,"<@"+member.id+"> has left the server")
+
+@client.event
 async def on_message(message):
     message.content = str(message.content)
     if not "441392574700191744" in (role.id for role in message.author.roles):
