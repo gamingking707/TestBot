@@ -37,6 +37,12 @@ async def on_message(message):
             args = message.content.split()
             async for i in client.logs_from(message.channel,int(args[1])+1):
                 await client.delete_message(i)
+        #Muting
+        elif message.content.lower().startswith(prefix+"mute"):
+            u = message.content[8:-1]
+            user = discord.utils.get(message.author.server.members, id=u)
+            role=discord.utils.get(message.author.server.roles,name="Muted")
+            await client.add_roles(user,role)
     if any(msg+" testbot" in message.content.lower() for msg in greetings):
         if message.author.id == "430358551974772739":
             await client.send_message(message.channel, "Hello Creator!")
@@ -46,6 +52,15 @@ async def on_message(message):
             await client.send_message(message.channel, "Hello Admin <@"+message.author.id+">!")
         else:
             await client.send_message(message.channel, "Hello <@"+message.author.id+">!")
+                #Assignable roles
+            #Assignable roles
+    elif message.content.lower().startswith(prefix+"role"):
+        rolename = message.content[6:]
+        if not rolename in assignables:
+            rolename = None
+        user = message.author
+        role = discord.utils.get(user.server.roles, name=rolename)
+        await client.add_roles(user,role)
     elif message.content == prefix+"DIE" and message.author.id == "430358551974772739":
         await client.send_message(message.channel, "OOF")
         sys.exit()
