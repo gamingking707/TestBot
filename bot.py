@@ -62,6 +62,7 @@ async def on_message(message):
         user = message.author
         role = discord.utils.get(user.server.roles, name=rolename)
         await client.add_roles(user,role)
+        await client.send_message(message.channel,"Roled!")
     elif message.content == prefix+"DIE" and message.author.id == "430358551974772739":
         await client.send_message(message.channel, "OOF")
         sys.exit()
