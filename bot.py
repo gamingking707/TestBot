@@ -12,6 +12,7 @@ mode = "Talk"
 prefix = "/"
 greetings = ["hello","hi","howdy","whats up","what's up","sup","hey"]
 linkIDs = ("https://","http://","discord.gg/",".com",".org",".cc")
+assignables = ("Bible Study","Non-Christian")
 
 Client = discord.Client()
 client = commands.Bot(command_prefix = prefix)
