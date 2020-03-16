@@ -25,7 +25,7 @@ async def on_ready():
 @client.event
 async def on_member_remove(member):
     log = client.get_channel("570406892652724225")
-    await client.send_message(log,"<@"+member.id+"> has left the server")
+    await client.send_message(log,member.name+" (<@"+member.id+">) has left the server")
 
 @client.event
 async def on_message(message):
