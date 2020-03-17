@@ -128,7 +128,8 @@ async def on_message(message):
                 await client.send_message(message.channel, "You were right!")
                 await client.send_message(message.channel, "You guessed it in "+str(i+1)+" tries!")
                 await client.send_message(message.channel, "Average Guess Efficiency: "+str(eff/(i+1)*100)+"%")
-                await client.send_message(message.channel, "Real Guess Efficiency: "+str((acteff**(1/(i+1))-acteffsub)*100)+"%")
+                #await client.send_message(message.channel, "Real Guess Efficiency: "+str((acteff**(1/(i+1))-acteffsub)*100)+"%")
+                await client.send_message(message.channel, "Winning Probability: "+str(1/(len(logicals)+1)*100)+"%")
                 break
             elif i != trials-1:
                 if guess.content > num:
@@ -139,7 +140,8 @@ async def on_message(message):
                 await client.send_message(message.channel, "You're a failure :/")
                 await client.send_message(message.channel, "The number was: "+str(num))
                 await client.send_message(message.channel, "Average Guess Efficiency: "+str(eff/(i+1)*100)+"%")
-                await client.send_message(message.channel, "Real Guess Efficiency: "+str((acteff**(1/(i+1))-acteffsub)*100)+"%")
+                #await client.send_message(message.channel, "Real Guess Efficiency: "+str((acteff**(1/(i+1))-acteffsub)*100)+"%")
+                await client.send_message(message.channel, "Winning Probability: "+str(1/(len(logicals)+1)*100)+"%")
     elif message.content.lower().startswith(prefix+"countdown"):
         args = message.content.split()
         num = int(args[1])
